@@ -5,10 +5,10 @@ const refs = {
   btnStop: document.querySelector('button[data-stop]'),
 };
 
-refs.btnStart.style.width = '100px';
-refs.btnStart.style.height = '50px';
-refs.btnStop.style.width = '100px';
-refs.btnStop.style.height = '50px';
+refs.btnStart.style.width = '75px';
+refs.btnStart.style.height = '40px';
+refs.btnStop.style.width = '75px';
+refs.btnStop.style.height = '40px';
 
 refs.btnStop.setAttribute(`disabled`, true);
 
