@@ -53,7 +53,7 @@ function onScreenLoad(obj) {
 function counter(chosenDate) {
   const currentDate = new Date();
   const countdownTime = convertMs(chosenDate.getTime() - currentDate.getTime());
-//   console.log(countdownTime);
+  //   console.log(countdownTime);
   onScreenLoad(countdownTime);
   if (
     countdownTime.days === 0 &&
@@ -70,7 +70,7 @@ function counter(chosenDate) {
 }
 
 function addLeadingZero(value) {
-  return String(value).padStart(2, '0'); 
+  return String(value).padStart(2, '0');
 }
 
 const options = {
@@ -89,13 +89,15 @@ const options = {
       console.log(currentDate.getTime());
       refs.startBtn.addEventListener('click', startCounter);
       // counter trigger function
-      function startCounter() {
-        clearInterval(timerInterval);
-        timerInterval = setInterval(() => counter(chosenDate), 1000);
-        refs.startBtn.setAttribute(`disabled`, true);
-      }
     }
   },
 };
 
-flatpickr(refs.calendar, options);
+const datePicker = flatpickr(refs.calendar, options);
+
+function startCounter() {
+  chosenDate = datePicker.selectedDates[0];
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => counter(chosenDate), 1000);
+  refs.startBtn.setAttribute(`disabled`, true);
+}
